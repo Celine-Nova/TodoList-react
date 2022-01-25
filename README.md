@@ -1,5 +1,5 @@
 # TODOLIST
-D'après une maquette examiner les besoins
+Créer une Todo-List en examiner les besoins
 
 ## Composants
 ### State component (App)
@@ -16,3 +16,6 @@ Validation de types des props d'un composant
 
 ### Librairie classNames
 Lorsqu'il y a beaucoup de conditions sur un même element cela peut vite devenir désordonné. `classNames` facilite en rejoignant les conditionnelles ensemble
+
+## Closure
+Une fonction qui retourne une autre fonction avec code "dormant" et dont elle détient une information (une donnée)

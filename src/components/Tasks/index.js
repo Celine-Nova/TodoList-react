@@ -14,24 +14,25 @@
  /**
   * Code
   */
-const Tasks = ({ tasks }) => (
-
-    <ul id='todo-list'>
-        {tasks.map(task=>
-        // Assignons une key aux éléments de notre liste dans numbers.map() afin de corriger le problème de clés manquantes.
-       
-        <Task 
+const Tasks = ({ tasks, onCheck }) => (
+    
+    <ul id="todo-list">
+        {tasks.map(task => (
+            <Task
+            // Assignons une key aux éléments de notre liste dans tasks.map() afin de corriger le problème de clés manquantes.
             key={task.id}
+            onTaskCheck={onCheck}
             // je deverse les données de chaque Objet task (spread operator)
             {...task}
         />
-        )}
+        ))}
     </ul>
-)
-Tasks.propTypes = {
+    );
+
+    Tasks.propTypes = {
+    onCheck: PropTypes.func.isRequired,
     tasks: PropTypes.arrayOf(PropTypes.shape({
         id: PropTypes.number.isRequired,
-    }).isRequired).isRequired
-    
-}
+    }).isRequired).isRequired,
+};
 export default Tasks;

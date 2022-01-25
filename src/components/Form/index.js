@@ -17,9 +17,9 @@
     onAddTask();
    }
    handleChange = (evt) => {
-    // Je recup la valeur du champ
+    // Je recupère la valeur du champ
     const { value } = evt.target;
-    // Je recup la fonction a exécuter
+    // Je recupère la fonction a exécuter
     const { onChangeInput } = this.props;
 
     onChangeInput(value);

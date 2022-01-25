@@ -19,30 +19,36 @@ class App extends React.Component {
     tasks: data,
     input: ''
   }
+  // NE JAMAIS MODIFIER LE STATE PAR NOUS MEME
   addTask = () =>{
+    // je récupère les tâches du state
     const {tasks, input} = this.state;
     const content = input.trim();
     // Calcul du prochain ID
     const lastId = Math.max(...tasks.map(task => task.id)) + 1;
-    // je crée une nouvelle tâche
-    const newTask ={
-      id : lastId,
-      label: content,
-      done: false,
-    }
-    // OK : concat : On recup un nouveau tableau
+    // Si le contenu n'est pas vide je crée une nouvelle tâche
+    if(content !== ''){
+      const newTask = {
+        id : lastId,
+        label: content,
+        done: false,
+      };
+      // NOUVELLE LISTE = ANCIENNE LISTE + NOUVELLE TACHE
+      // OK : concat : On recup un nouveau tableau
       // https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Array/concat
       // const newTasks = tasks.concat(newTask);
-
-      // TOP: avec le spread operator
+      
+      // TOP: avec le spread operator ATTENTION à ne pas confondre avec rest operator
       const newTasks = [...tasks, newTask];
-
+      console.log(newTasks)
+      
       // je modifie le state
       // je reinitialise l'input apres avoir entrée une tâche
       this.setState({
         tasks: newTasks,
         input : '',
       })
+    }
   }
   changeInput = (inputValue) => {
       // changer le state via setState
@@ -50,11 +56,35 @@ class App extends React.Component {
         input: inputValue,
       });
   }
+  changeCheckTask = id => () => {
+    // retourner une fonction avec un code dormant qui sera executé au moment de l'evènement (onChange dans Task)
+    // concepte de CLOSURE :  une fonction qui retourne autre fonction => en Closure(2ème fonction) j'ai une information ici l'id
+    // Pas besoin de block d'execution donc fonction Double fléchée
+   
+    // je récupère les tâches du state
+    const {tasks} = this.state
+    //-> Avoir une copie du tableau de tâche
+    //-> Identifier la tâche à faire évoluer
+    const newTasks =  tasks.map(task =>{
+      if(task.id === id){
+        return {
+          // je récupère tout ce que contient l'objet actuel
+          ...task,
+          // j'inverse la valeur done
+          done : !tasks.done,
+        };
+      }
+     return task; 
+     });
+    this.setState({
+      tasks: newTasks
+    });
+  }
   render(){
     // je récupère des taches dans le state
     const { tasks, input } = this.state;
     // je recherche le nombre de tâches dans le tableau qui ont la valeur done à false
-    const count = data.filter(task => !task.done).length
+    const count = tasks.filter(task => !task.done).length;
  
     return (
     <div id="todo">
@@ -66,6 +96,7 @@ class App extends React.Component {
       <Counter count={count}/>
       <Tasks 
         tasks={tasks}
+        onCheck={this.changeCheckTask}
       />
     </div>
   );

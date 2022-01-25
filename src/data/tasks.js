@@ -1,16 +1,17 @@
+/* eslint-disable import/no-anonymous-default-export */
 export default [
     {
-      id: '1',
+      id: 1,
       label: 'React',
       done: true,
     },
     {
-      id: '12',
+      id: 12,
       label: 'Vue',
       done: false,
     },
     {
-      id: '5',
+      id: 5,
       label: 'Angular',
       done: false,
     },
