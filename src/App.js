@@ -80,6 +80,16 @@ class App extends React.Component {
       tasks: newTasks
     });
   }
+  handleDeleteTask = (id) => () => {
+    // je récupère les tâches du state
+    const {tasks} = this.state
+     // filtrer les tâches pour ne conserver que les tâches différentes de l'id courant
+    //  ERROR CONSOLE Encountered two children with the same key, `-Infinity`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version.
+     const newTasks = tasks.filter(task => task.id !== id);
+    this.setState({
+      tasks: newTasks
+    });
+  }
   render(){
     // je récupère des taches dans le state
     const { tasks, input } = this.state;
@@ -97,6 +107,7 @@ class App extends React.Component {
       <Tasks 
         tasks={tasks}
         onCheck={this.changeCheckTask}
+        onDeleteTask={this.handleDeleteTask}
       />
     </div>
   );

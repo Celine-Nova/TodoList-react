@@ -19,3 +19,5 @@ Lorsqu'il y a beaucoup de conditions sur un même element cela peut vite devenir
 
 ## Closure
 Une fonction qui retourne une autre fonction avec code "dormant" et dont elle détient une information (une donnée)
+
+### React Icons

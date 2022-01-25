@@ -4,7 +4,8 @@
  import React from 'react';
  import PropTypes from 'prop-types';
  import classNames from 'classnames';
- 
+ import { MdDeleteForever} from "react-icons/md";
+
  /**
   * Local import
   */
@@ -16,7 +17,7 @@
   * Code
   */
 //  je destructure chaque objet task reçu en props
-const Task = ( {id, done, label, onTaskCheck} ) => (
+const Task = ( {id, done, label, onTaskCheck, onDeleteTask} ) => (
          /**
           * Si il y a beaucoup de noms de classes qui doivent être conditionnels sur le même élément
           * cela peut devenir un peu désordonné, mais cela fonctionne toujours.
@@ -34,7 +35,7 @@ const Task = ( {id, done, label, onTaskCheck} ) => (
           // onChange a besoin d'une fonction => fonction morte "dormante" qui sera executé lors de l'evenemebt
           onChange={onTaskCheck(id)}
         />
-        <span className="task-label">{label}</span>
+        <span className="task-label">{label} <MdDeleteForever id='icon-basket' onClick={onDeleteTask(id)}/></span>
     </li>
     );    
   
@@ -43,5 +44,6 @@ const Task = ( {id, done, label, onTaskCheck} ) => (
       done: PropTypes.bool.isRequired,
       label: PropTypes.string.isRequired,
       onTaskCheck: PropTypes.func.isRequired,
+      onDeleteTask: PropTypes.func.isRequired,
   };
 export default Task;

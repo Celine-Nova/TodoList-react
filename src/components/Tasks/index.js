@@ -14,7 +14,7 @@
  /**
   * Code
   */
-const Tasks = ({ tasks, onCheck }) => (
+const Tasks = ({ tasks, onCheck, onDeleteTask }) => (
     
     <ul id="todo-list">
         {tasks.map(task => (
@@ -22,6 +22,7 @@ const Tasks = ({ tasks, onCheck }) => (
             // Assignons une key aux éléments de notre liste dans tasks.map() afin de corriger le problème de clés manquantes.
             key={task.id}
             onTaskCheck={onCheck}
+            onDeleteTask={ onDeleteTask}
             // je deverse les données de chaque Objet task (spread operator)
             {...task}
         />
@@ -31,6 +32,7 @@ const Tasks = ({ tasks, onCheck }) => (
 
     Tasks.propTypes = {
     onCheck: PropTypes.func.isRequired,
+    onDeleteTask: PropTypes.func.isRequired,
     tasks: PropTypes.arrayOf(PropTypes.shape({
         id: PropTypes.number.isRequired,
     }).isRequired).isRequired,
