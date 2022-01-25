@@ -13,3 +13,6 @@ Composant sans State composant idiot ou composant de présentation. N'affiche qu
 
 ## PropTypes
 Validation de types des props d'un composant
+
+### Librairie classNames
+Lorsqu'il y a beaucoup de conditions sur un même element cela peut vite devenir désordonné. `classNames` facilite en rejoignant les conditionnelles ensemble

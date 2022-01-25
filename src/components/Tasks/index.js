@@ -22,14 +22,14 @@ const Tasks = ({ tasks }) => (
        
         <Task 
             key={task.id}
-            // je deverse les données de chaque Objet task
+            // je deverse les données de chaque Objet task (spread operator)
             {...task}
         />
         )}
     </ul>
 )
 Tasks.propTypes = {
-    task: PropTypes.arrayOf(PropTypes.shape({
+    tasks: PropTypes.arrayOf(PropTypes.shape({
         id: PropTypes.number.isRequired,
     }).isRequired).isRequired
     

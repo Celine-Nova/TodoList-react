@@ -3,11 +3,13 @@
  */
  import React from 'react';
  import PropTypes from 'prop-types';
+ import classNames from 'classnames';
  
  /**
   * Local import
   */
  import './tasks.css';
+
 
  
  /**
@@ -20,9 +22,13 @@ const Task = ( {done, label} ) =>{
           * Si il y a beaucoup de noms de classes qui doivent être conditionnels sur le même élément
           * cela peut devenir un peu désordonné, mais cela fonctionne toujours.
           * Au lieu  : done ? 'task task--done' : 'task' label ? 'React' : ''
-          * Utiliser la bliothèque Classnames
+          * Utiliser la librairie classNames
         */
-    <li className="task task--done" >
+    <li className={classNames(
+      'task',
+      {'task--done': done},
+      )}
+      >
         <input
           type="checkbox"
           checked={done}
