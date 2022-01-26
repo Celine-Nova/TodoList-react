@@ -17,7 +17,7 @@
   * Code
   */
 //  je destructure chaque objet task reçu en props
-const Task = ( {id, done, label, onTaskCheck, onDeleteTask} ) => (
+const Task = ( {id, done, label, onCheckTask, onRemoveTask} ) => (
          /**
           * Si il y a beaucoup de noms de classes qui doivent être conditionnels sur le même élément
           * cela peut devenir un peu désordonné, mais cela fonctionne toujours.
@@ -33,17 +33,18 @@ const Task = ( {id, done, label, onTaskCheck, onDeleteTask} ) => (
           type="checkbox"
           checked={done}
           // onChange a besoin d'une fonction => fonction morte "dormante" qui sera executé lors de l'evenemebt
-          onChange={onTaskCheck(id)}
+          onChange={onCheckTask(id)}
         />
-        <span className="task-label">{label} <MdDeleteForever id='icon-basket' onClick={onDeleteTask(id)}/></span>
+        <span className="task-label">{label}</span>
+        <MdDeleteForever id='icon-basket' onClick={onRemoveTask(id)}/>
     </li>
     );    
   
   Task.propTypes ={
-      id: PropTypes.number.isRequired,
+      id: PropTypes.string.isRequired,
       done: PropTypes.bool.isRequired,
       label: PropTypes.string.isRequired,
-      onTaskCheck: PropTypes.func.isRequired,
-      onDeleteTask: PropTypes.func.isRequired,
+      onCheckTask: PropTypes.func.isRequired,
+      onRemoveTask: PropTypes.func.isRequired,
   };
 export default Task;

@@ -14,27 +14,29 @@
  /**
   * Code
   */
-const Tasks = ({ tasks, onCheck, onDeleteTask }) => (
+const Tasks = ({ tasks, actions  }) => (
     
+        // console.log(...actions)
     <ul id="todo-list">
         {tasks.map(task => (
             <Task
             // Assignons une key aux éléments de notre liste dans tasks.map() afin de corriger le problème de clés manquantes.
             key={task.id}
-            onTaskCheck={onCheck}
-            onDeleteTask={ onDeleteTask}
+        
             // je deverse les données de chaque Objet task (spread operator)
             {...task}
+            {...actions}
         />
         ))}
     </ul>
     );
 
     Tasks.propTypes = {
-    onCheck: PropTypes.func.isRequired,
-    onDeleteTask: PropTypes.func.isRequired,
-    tasks: PropTypes.arrayOf(PropTypes.shape({
-        id: PropTypes.number.isRequired,
-    }).isRequired).isRequired,
-};
+        actions: PropTypes.objectOf(
+            PropTypes.func.isRequired,
+            ).isRequired,
+        tasks: PropTypes.arrayOf(PropTypes.shape({
+            id: PropTypes.string.isRequired,
+        }).isRequired).isRequired,
+    };
 export default Tasks;

@@ -1,5 +1,6 @@
 # TODOLIST
-Créer une Todo-List en examiner les besoins
+Créer une Todo-List en examiner les besoins 
+:point_right: [ici](https://celine-nova.github.io/TodoList-react/) 
 
 ## Composants
 ### State component (App)
@@ -21,3 +22,5 @@ Lorsqu'il y a beaucoup de conditions sur un même element cela peut vite devenir
 Une fonction qui retourne une autre fonction avec code "dormant" et dont elle détient une information (une donnée)
 
 ### React Icons
+*****************
+![resultat](public/resultat.png)
